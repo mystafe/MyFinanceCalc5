@@ -2,7 +2,7 @@ const  express = require('express');
 const app= express();
 const router=express.Router();
 
-const {getBanks,getBankById,getBankByName,createBank,updateBankPatch,updateBankPut,deleteBank,getBankCreditCardsFromBank}=require('../controllers/bankController')
+const {getBanks,getBankById,getBankByName,createBank,updateBankById,deleteBank,getBankCreditCardsFromBank}=require('../controllers/bankController')
 
 
 //Get All Banks
@@ -20,10 +20,10 @@ router.get('/name/:name', getBankByName);
 router.post('/', createBank);
 
 //Update Bank Patch
-router.patch('/:id', updateBankPatch);
+router.patch('/:id', updateBankById);
 
 //Update Bank Put
-router.put('/:id', updateBankPut);
+router.put('/:id', updateBankById);
 
 //Delete Bank
 router.delete('/:id', deleteBank);

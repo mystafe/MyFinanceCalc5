@@ -17,7 +17,7 @@ mongoose.connect('mongodb+srv://fincancecalc5:fincancecalc5@cluster0.grrm0qk.mon
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {console.log("we're connected!")});
+db.once('open', function() {console.log("mongo db connection succesful!")});
 
 
 
@@ -59,4 +59,5 @@ const overfdraftRouter = require('./routes/overdraftRoutes');
 app.use('/overdrafts', overfdraftRouter);
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Finance Calculation App V.5 listening on port ${port}!`));
+console.clear();

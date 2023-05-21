@@ -78,55 +78,37 @@ exports.createCreditCard = async (req, res) => {
     }
 }
 
-//Update CreditCard Patch
-exports.updateCreditCardPatch = async (req, res) => {
-    if (req.body.CardName != null) {
-        res.creditcard.CardName = req.body.CardName;
-    }
-    if (req.body.CreditLimit != null) {
-        res.creditcard.CreditLimit = req.body.CreditLimit;
-    }
-    if (req.body.RemainingLimit != null) {
-        res.creditcard.RemainingLimit = req.body.RemainingLimit;
-    }
-    if (req.body.TotalPayment != null) {
-        res.creditcard.TotalPayment = req.body.TotalPayment;
-    }
-    if (req.body.MonthtlyPayment != null) {
-        res.creditcard.MonthtlyPayment = req.body.MonthtlyPayment;
-    }
+//Update CreditCard By Id
+exports.updateCreditCardById = async (req, res) => {
     try {
-        const updatedCreditCard = await res.creditcard.save();
+        const creditcard = await CreditCard.findById(req.params.id).populate('BankId','Name')
+        .select('CardName CreditLimit RemainingLimit TotalPayment MonthtlyPayment')
+        .exec();
+        if (creditcard == null) {
+            return res.status(404).json({message: 'Cannot find creditcard'});
+        }
+        if (req.body.CardName != null) {
+            creditcard.CardName = req.body.CardName;
+        }
+        if (req.body.CreditLimit != null) {
+            creditcard.CreditLimit = req.body.CreditLimit;
+        }
+        if (req.body.RemainingLimit != null) {
+            creditcard.RemainingLimit = req.body.RemainingLimit;
+        }
+        if (req.body.TotalPayment != null) {
+            creditcard.TotalPayment = req.body.TotalPayment;
+        }
+        if (req.body.MonthtlyPayment != null) {
+            creditcard.MonthtlyPayment = req.body.MonthtlyPayment;
+        }
+        const updatedCreditCard = await creditcard.save();
         res.json(updatedCreditCard);
     } catch (error) {
         res.status(400).json({message: error.message});
     }
 }
 
-//Update CreditCard Put
-exports.updateCreditCardPut = async (req, res) => {
-    if (req.body.CardName != null) {
-        res.creditcard.CardName = req.body.CardName;
-    }
-    if (req.body.CreditLimit != null) {
-        res.creditcard.CreditLimit = req.body.CreditLimit;
-    }
-    if (req.body.RemainingLimit != null) {
-        res.creditcard.RemainingLimit = req.body.RemainingLimit;
-    }
-    if (req.body.TotalPayment != null) {
-        res.creditcard.TotalPayment = req.body.TotalPayment;
-    }
-    if (req.body.MonthtlyPayment != null) {
-        res.creditcard.MonthtlyPayment = req.body.MonthtlyPayment;
-    }
-    try {
-        const updatedCreditCard = await res.creditcard.save();
-        res.json(updatedCreditCard);
-    } catch (error) {
-        res.status(400).json({message: error.message});
-    }
-}
 
 //Delete CreditCard By Id
 exports.deleteCreditCard = async (req, res) =>  {

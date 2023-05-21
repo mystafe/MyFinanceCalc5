@@ -49,33 +49,24 @@ exports.createBank = async (req, res) => {
     }
 }
 
-//Update Bank Patch
-exports.updateBankPatch = async (req, res) => {
-    if (req.body.Name != null) {
-        res.bank.Name = req.body.Name;
-    }
+
+//Update Bank By Id
+exports.updateBankById = async (req, res) => {
     try {
-        const updatedBank = await res.bank.save();
+        const bank = await Bank.findById(req.params.id);
+        if (bank == null) {
+            return res.status(404).json({message: 'Cannot find bank'});
+        }
+        if (req.body.Name != null) {
+            bank.Name = req.body.Name;
+        }
+        const updatedBank = await bank.save();
         res.json(updatedBank);
-    }
-    catch (error) {
+    } catch (error) {
         res.status(400).json({message: error.message});
     }
 }
 
-//Update Bank Put
-exports.updateBankPut = async (req, res) => {
-    if (req.body.Name != null) {
-        res.bank.Name = req.body.Name;
-    }
-    try {
-        const updatedBank = await res.bank.save();
-        res.json(updatedBank);
-    }
-    catch (error) {
-        res.status(400).json({message: error.message});
-    }
-}
 
 //Delete Bank
 exports.deleteBank = async (req, res) => {
