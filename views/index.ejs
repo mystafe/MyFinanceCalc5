@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Calculator v.5</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="light-mode">
+    
+
+    <div class="datetime-picker">
+        <input type="month" id="selectedMonth" value="2023-05" 
+        name="selectedMonth" class="datepicker" min="2023-04" >
+        <button class="go-button">Go</button>
+        <button class="go-details-button">GO Details</button>
+      </div>
+      
+      <hr>
+      
+      <table class="bank-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Current</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> <strong>Loans</strong></td>
+            <td><%= Bank.Loan.currentLoan %></td>
+            <td><%= Bank.Loan.totalLoan %></td>
+          </tr>
+          <tr>
+            <td> <strong>Credit Cards</strong> </td>
+            <td><%= Bank.CreditCard.currentCreditCard %></td>
+            <td><%= Bank.CreditCard.totalCreditCard %></td>
+          </tr>
+          <tr>
+            <td> <strong>Deposits</strong> </td>
+            <td><%= Bank.Deposit.currentDeposit %></td>
+            <td><%= Bank.Deposit.totalDeposit %></td>
+          </tr>
+        </tbody>
+      </table>
+      
+</body>
+</html>

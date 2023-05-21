@@ -3,11 +3,16 @@ const app = express();
 const port = 3000;
 //fincancecalc5
 
+ejs = require('ejs');
+app.set('view engine', 'ejs');
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
+app.use(express.static('public'));
+app.use(express.static('views'));
 
 const mongoose = require('mongoose');
+mongoose.set('debug', true);
 mongoose.connect('mongodb+srv://fincancecalc5:fincancecalc5@cluster0.grrm0qk.mongodb.net/', {useNewUrlParser: true});
 
 const db = mongoose.connection;
@@ -26,14 +31,23 @@ const tebid = "6467dcd1f13d743c19b57181";
 const aktifid = "6467dcd1f13d743c19b57182";
 
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req, res) => 
+{
+    const Bank2 = {
+        "Loan": { "currentLoan": 13300, "totalLoan": 20300, "monthlyPayment": 0, "interestRate": 0 },
+        "CreditCard": { "currentCreditCard": 5510, "totalCreditCard": 20210, "monthlyPayment": 0, "interestRate": 0 },
+        "Deposit": { "currentDeposit": 1000, "totalDeposit": 1000, "monthlyPayment": 0, "interestRate": 0 }
+      }
+    res.render('../views/index',{Bank:Bank2})
 
+});
 
-const loanRouter = require('./routes/loanRoutes');
-app.use('/loans', loanRouter);
 
 const bankRouter = require('./routes/bankRoutes');
 app.use('/banks', bankRouter);
+
+const loanRouter = require('./routes/loanRoutes');
+app.use('/loans', loanRouter);
 
 const creditcardRouter = require('./routes/creditcardRoutes');
 app.use('/creditcards', creditcardRouter);

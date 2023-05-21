@@ -3,30 +3,35 @@ const app= express();
 const router=express.Router();
 const mongoose = require('mongoose');
 
-const CreditCardSchema = new mongoose.Schema({
-    BankId:{ type: mongoose.Schema.Types.ObjectId, ref:'Bank'},
-    CardName: String,
-    CreditLimit: Number,
-    RemainingLimit: Number,
-    TotalPayment: Number,
-    MonthtlyPayment: Number
-});
 
-const CreditCard = mongoose.model('CreditCard', CreditCardSchema);
+const {Bank,CreditCard,Deposit,Loan,OverdraftAccount}=require('../db')
 
-router.get('/', (req, res) => {
-    CreditCard.find({})
-      .then(creditcards => {
-        res.send(creditcards);
-      })
-      .catch(err => {
-        console.error(err);
-        res.status(500).send("An error occurred");
-      });
-  });
+const {getCreditCards,getCreditCardById,getCreditCardByName,createCreditCard,updateCreditCardPatch,updateCreditCardPut,deleteCreditCard,getBankCreditCardsfromCard}=require('../controllers/creditCardController')
+
+//Get All CreditCards
+router.get('/', getCreditCards);
+
+//Get Individual CreditCard
+router.get('/:id', getCreditCardById);
+
+//Get CreditCard by Name
+router.get('/name/:name', getCreditCardByName);
+
+//Get CreditCard by BankId
+router.get('/bank/:id',getBankCreditCardsfromCard);
+
+//Create CreditCard
+router.post('/', createCreditCard);
+
+//Update CreditCard Put
+router.patch('/:id',updateCreditCardPatch);
+
+//Update CreditCard Put
+router.put('/:id',updateCreditCardPut);
 
 
-
+//Delete CreditCard
+router.delete('/:id',deleteCreditCard);
 
 
 router.use(app);

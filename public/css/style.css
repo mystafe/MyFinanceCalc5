@@ -1,0 +1,111 @@
+
+  body {
+    background-color: #1e1e1e;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+
+  .datetime-picker {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .datetime-picker label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  .datetime-picker .datepicker {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #2e2e2e;
+    color: #fff;
+  }
+
+  .datetime-picker .go-button,
+  .datetime-picker .go-details-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .bank-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .bank-table th,
+  .bank-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .bank-table th {
+    background-color: #2e2e2e;
+  }
+
+  .bank-table td {
+    vertical-align: middle;
+  }
+
+  hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+
+
+
+
+
+
+/* Light mode CSS styles */
+body.light-mode {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  .light-mode .datetime-picker .datepicker {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .light-mode .datetime-picker .go-button,
+  .light-mode .datetime-picker .go-details-button {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  
+  .light-mode .bank-table th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Dark mode CSS styles */
+  body.dark-mode {
+    background-color: #1e1e1e;
+    color: #fff;
+  }
+  
+  .dark-mode .datetime-picker .datepicker {
+    background-color: #2e2e2e;
+    color: #fff;
+  }
+  
+  .dark-mode .datetime-picker .go-button,
+  .dark-mode .datetime-picker .go-details-button {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  
+  .dark-mode .bank-table th {
+    background-color: #2e2e2e;
+  }
+  
