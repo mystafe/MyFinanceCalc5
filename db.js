@@ -11,6 +11,12 @@ const BankSchema = new mongoose.Schema({
   
 exports.Bank = mongoose.model('Bank', BankSchema);
 
+const akbank=this.Bank({
+    Name:"Akbank"
+});
+
+
+
   const CreditCardSchema = new mongoose.Schema({
     BankId:{ type: mongoose.Schema.Types.ObjectId, ref:'Bank'},
     CardName: String,
@@ -19,6 +25,8 @@ exports.Bank = mongoose.model('Bank', BankSchema);
     TotalPayment: Number,
     MonthtlyPayment: Number
 });  
+
+
 
 exports.CreditCard = mongoose.model('CreditCard', CreditCardSchema);
 

@@ -26,7 +26,7 @@ router.put('/:id',updateOverdraftById);
 router.patch('/:id', updateOverdraftById);
 
 //Delete OverdraftAccount By Id
-router.delete('/:id', updateOverdraftById);
+router.delete('/:id', deleteOverdraft);
 
 
 

@@ -17,18 +17,7 @@ mongoose.connect('mongodb+srv://fincancecalc5:fincancecalc5@cluster0.grrm0qk.mon
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {console.log("mongo db connection succesful!")});
-
-
-
-const akbankid = "6467dcd1f13d743c19b5717b";
-const qnbid = "6467dcd1f13d743c19b5717c";
-const isbankid = "6467dcd1f13d743c19b5717d";
-const garantiid = "6467dcd1f13d743c19b5717d";
-const ziraatid = "6467dcd1f13d743c19b5717f";
-const denizid= "6467dcd1f13d743c19b57180";
-const tebid = "6467dcd1f13d743c19b57181";
-const aktifid = "6467dcd1f13d743c19b57182";
+db.once('open', function() {console.log("Mongodb connected!")});
 
 
 app.get('/', (req, res) => 
@@ -59,5 +48,9 @@ const overfdraftRouter = require('./routes/overdraftRoutes');
 app.use('/overdrafts', overfdraftRouter);
 
 
-app.listen(port, () => console.log(`Finance Calculation App V.5 listening on port ${port}!`));
 console.clear();
+
+app.listen(port, () => console.log(`Mustafa Evleksiz \t Finance App (V.5) on: ${port}!`));
+
+
+

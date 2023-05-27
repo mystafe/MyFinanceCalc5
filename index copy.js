@@ -30,6 +30,17 @@ db.collection('banks').insertMany([Bank1, Bank2, Bank3, Bank4, Bank5, Bank6, Ban
     console.log("inserted banks");
 });
 
+
+const akbankid = "6467dcd1f13d743c19b5717b";
+const qnbid = "6467dcd1f13d743c19b5717c";
+const isbankid = "6467dcd1f13d743c19b5717d";
+const garantiid = "6467dcd1f13d743c19b5717d";
+const ziraatid = "6467dcd1f13d743c19b5717f";
+const denizid= "6467dcd1f13d743c19b57180";
+const tebid = "6467dcd1f13d743c19b57181";
+const aktifid = "6467dcd1f13d743c19b57182";
+
+
 const LoanSchema = new mongoose.Schema({
     BankId:{ type: mongoose.Schema.Types.ObjectId, ref:'Bank'},
     LoanName: String,
